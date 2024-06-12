@@ -53,7 +53,6 @@ namespace SnakeGame_FinalProject_
             {
                 titleLabel.Text = "Snake Game!";
                 subtitleLabel.Text = "Press Space to Start or Esc to End";
-                imageLabel.Image = Properties.Resources.snakeImage;
             }
             else if (gameTimer.Enabled == true)
             {

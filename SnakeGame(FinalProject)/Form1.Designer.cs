@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
             this.titleLabel = new System.Windows.Forms.Label();
             this.subtitleLabel = new System.Windows.Forms.Label();
@@ -38,7 +39,7 @@
             // 
             // gameTimer
             // 
-            this.gameTimer.Interval = 200;
+            this.gameTimer.Interval = 150;
             this.gameTimer.Tick += new System.EventHandler(this.gameTimer_Tick);
             // 
             // titleLabel
@@ -54,7 +55,7 @@
             // 
             // subtitleLabel
             // 
-            this.subtitleLabel.BackColor = System.Drawing.Color.Black;
+            this.subtitleLabel.BackColor = System.Drawing.Color.Transparent;
             this.subtitleLabel.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.subtitleLabel.ForeColor = System.Drawing.Color.White;
             this.subtitleLabel.Location = new System.Drawing.Point(101, 477);
@@ -78,6 +79,7 @@
             // 
             this.imageLabel.BackColor = System.Drawing.Color.Transparent;
             this.imageLabel.ForeColor = System.Drawing.Color.Transparent;
+            this.imageLabel.Image = global::SnakeGame_FinalProject_.Properties.Resources.snakeImage;
             this.imageLabel.Location = new System.Drawing.Point(110, 30);
             this.imageLabel.Name = "imageLabel";
             this.imageLabel.Size = new System.Drawing.Size(367, 413);
@@ -96,6 +98,7 @@
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Snake Game";
             this.Load += new System.EventHandler(this.Form1_Load);
