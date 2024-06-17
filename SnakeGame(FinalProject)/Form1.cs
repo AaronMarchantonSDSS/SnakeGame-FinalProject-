@@ -259,10 +259,5 @@ namespace SnakeGame_FinalProject_
 
             this.BackgroundImage = Properties.Resources.gridImage;
         }
-
-        public void ColourScreen()
-        {
-
-        }
     }
 }
