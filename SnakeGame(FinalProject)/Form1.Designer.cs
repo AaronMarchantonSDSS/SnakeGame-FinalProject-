@@ -1,6 +1,6 @@
 ﻿namespace SnakeGame_FinalProject_
 {
-    partial class Form1
+    partial class greenButton
     {
         /// <summary>
         /// Required designer variable.
@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(greenButton));
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
             this.titleLabel = new System.Windows.Forms.Label();
             this.subtitleLabel = new System.Windows.Forms.Label();
             this.scoreLabel = new System.Windows.Forms.Label();
             this.imageLabel = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // gameTimer
@@ -85,12 +86,22 @@
             this.imageLabel.Size = new System.Drawing.Size(367, 413);
             this.imageLabel.TabIndex = 8;
             // 
-            // Form1
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // greenButton
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(600, 600);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.imageLabel);
             this.Controls.Add(this.scoreLabel);
             this.Controls.Add(this.titleLabel);
@@ -99,12 +110,11 @@
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
+            this.Name = "greenButton";
             this.Text = "Snake Game";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             this.ResumeLayout(false);
 
         }
@@ -116,6 +126,7 @@
         private System.Windows.Forms.Label subtitleLabel;
         private System.Windows.Forms.Label scoreLabel;
         private System.Windows.Forms.Label imageLabel;
+        private System.Windows.Forms.Button button1;
     }
 }
 

@@ -98,5 +98,8 @@
   <ItemGroup>
     <None Include="Resources\iconfinder-snake-4591880_122131.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pixil-frame-0 %281%29.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

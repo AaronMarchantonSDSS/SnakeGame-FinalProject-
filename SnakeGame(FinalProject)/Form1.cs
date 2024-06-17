@@ -15,13 +15,16 @@ using System.Media;
 
 namespace SnakeGame_FinalProject_
 {
-    public partial class Form1 : Form
+    public partial class greenButton : Form
     {
+        //set up locations for graphics
         Rectangle snake = new Rectangle(160, 300, 20, 20);
         Rectangle apple = new Rectangle(405, 305, 10, 10);
+
         SolidBrush redBrush = new SolidBrush(Color.DarkRed);
         SolidBrush blueBrush = new SolidBrush(Color.CornflowerBlue);
         SolidBrush orangeBrush = new SolidBrush(Color.Orange);
+        SolidBrush greenBrush = new SolidBrush(Color.Green);
 
         SoundPlayer eat = new SoundPlayer(Properties.Resources.eatSound);
         SoundPlayer lose = new SoundPlayer(Properties.Resources.loseSound);
@@ -33,11 +36,14 @@ namespace SnakeGame_FinalProject_
         int applep1 = 0;
         int applep2 = 0;
 
+        bool keepSpawning = false;
+
         string direction = "right";
+        string colour = "Orange";
 
         List<Rectangle> bodyParts = new List<Rectangle>();
 
-        public Form1()
+        public greenButton()
         {
             InitializeComponent();
         }
@@ -49,11 +55,13 @@ namespace SnakeGame_FinalProject_
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
+            //set launch screen 
             if (gameTimer.Enabled == false && snakeScore == 0)
             {
                 titleLabel.Text = "Snake Game!";
                 subtitleLabel.Text = "Press Space to Start or Esc to End";
             }
+            //set game screen and setup snake graphics
             else if (gameTimer.Enabled == true)
             {
                 imageLabel.Visible = false;
@@ -63,9 +71,10 @@ namespace SnakeGame_FinalProject_
 
                 for (int i = 0; i < bodyParts.Count(); i++)
                 {
-                    e.Graphics.FillEllipse(orangeBrush, bodyParts[i]);
+                        e.Graphics.FillEllipse(orangeBrush, bodyParts[i]);
                 }
             }
+            //set game over screen
             else if (gameTimer.Enabled == false)
             {
                 titleLabel.Text = "Snake Game!";
@@ -73,7 +82,7 @@ namespace SnakeGame_FinalProject_
                 scoreLabel.Text = $"Previous Score: {snakeScore}";
 
                 imageLabel.Visible = true;
-                imageLabel.Image = Properties.Resources.snakeImage;
+                this.BackgroundImage = null;
             }
         }
 
@@ -91,6 +100,7 @@ namespace SnakeGame_FinalProject_
         {
             switch (e.KeyCode)
             {
+                //change direction upon press and make it move continuously
                 case Keys.Up:
                     if (direction != "down")
                     {
@@ -115,10 +125,12 @@ namespace SnakeGame_FinalProject_
                         direction = "right";
                     }
                     break;
+                //change screens or close program upon button press
                 case Keys.Space:
                     if (gameTimer.Enabled == false)
                     {
                         InitializeGame();
+                        gameTimer.Enabled = true;
                     }
                     break;
                 case Keys.Escape:
@@ -130,18 +142,9 @@ namespace SnakeGame_FinalProject_
             }
         }
 
-        private void Form1_KeyUp(object sender, KeyEventArgs e)
-        {
-            switch (e.KeyCode)
-            {
-                case Keys.Space:
-                    gameTimer.Enabled = true;
-                    break;
-            }
-        }
-
         public void PlayerMovement()
         {
+            //move snake body parts to follow the other body parts
             for (int i = bodyParts.Count - 1; i > 0; i--)
             {
                 bodyParts[i] = bodyParts[i - 1];
@@ -149,6 +152,7 @@ namespace SnakeGame_FinalProject_
 
             bodyParts[0] = snake;
 
+            //controls snake movement
             if (direction == "up")
             {
                 snake.Y = snake.Y - snakeSpeed;
@@ -169,6 +173,7 @@ namespace SnakeGame_FinalProject_
 
         public void CollisionWithWall()
         {
+            //check if snake hits the wall (game over)
             if (snake.Y > 580 || snake.Y < 0 || snake.X > 580 || snake.X < 0)
             {
                 gameTimer.Enabled = false;
@@ -179,6 +184,7 @@ namespace SnakeGame_FinalProject_
 
         public void CollisionWithSelf()
         {
+            //check if snake hits itself (game over)
             for (int i = 0; i < bodyParts.Count(); i++)
             {
                 if (bodyParts[i].IntersectsWith(snake))
@@ -192,23 +198,47 @@ namespace SnakeGame_FinalProject_
 
         public void SnakeGetsApple()
         {
+            //if snake gets apple grow the body by 1
             if (snake.IntersectsWith(apple))
             {
                 snakeScore++;
 
                 eat.Play();
 
+                bodyParts.Insert(bodyParts.Count, snake);
+
+                keepSpawning = true;
+
                 applep1 = randValue.Next(0, 30);
                 applep2 = randValue.Next(0, 30);
 
                 apple = new Rectangle(applep1 * 20 + 5, applep2 * 20 + 5, 10, 10);
 
-                bodyParts.Insert(bodyParts.Count, snake);
+                //Check apple won't spawn in snake
+                while (keepSpawning == true)
+                {
+                    for (int i = 0; i < bodyParts.Count(); i++)
+                    {
+                        if (apple.IntersectsWith(bodyParts[i]))
+                        {
+                            applep1 = randValue.Next(0, 30);
+                            applep2 = randValue.Next(0, 30);
+
+                            apple = new Rectangle(applep1 * 20 + 5, applep2 * 20 + 5, 10, 10);
+
+                            keepSpawning = true;
+
+                            break;
+                        }
+                        keepSpawning = false;
+                    }
+                }
             }
         }
 
         public void InitializeGame()
         {
+            //set up the game screen and draw graphics
             titleLabel.Text = "";
             subtitleLabel.Text = "";
             scoreLabel.Text = "";
@@ -226,6 +256,13 @@ namespace SnakeGame_FinalProject_
             bodyParts.Add(new Rectangle(140, 300, 20, 20));
             bodyParts.Add(new Rectangle(120, 300, 20, 20));
             bodyParts.Add(new Rectangle(100, 300, 20, 20));
+
+            this.BackgroundImage = Properties.Resources.gridImage;
+        }
+
+        public void ColourScreen()
+        {
+
         }
     }
 }
