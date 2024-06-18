@@ -67,6 +67,7 @@ namespace SnakeGame_FinalProject_
                 {
                     titleLabel.Text = "Snake Game!";
                     subtitleLabel.Text = "Press Space to Start or Esc to End";
+                    colourLabel.Text = "";
 
                     if (snakeScore != 0)
                     {
@@ -83,6 +84,8 @@ namespace SnakeGame_FinalProject_
                 titleLabel.Text = "";
                 subtitleLabel.Text = "";
                 scoreLabel.Text = "";
+                colourLabel.Text = "";
+
                 imageLabel.Visible = false;
 
                 e.Graphics.FillEllipse(snakeHeadBrush, snake);
@@ -313,6 +316,7 @@ namespace SnakeGame_FinalProject_
             titleLabel.Text = "";
             subtitleLabel.Text = "";
             scoreLabel.Text = "";
+            colourLabel.Text = "Select a Colour to Start";
 
             redButton.Visible = true;
             orangeButton.Visible = true;

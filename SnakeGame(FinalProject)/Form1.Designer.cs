@@ -42,6 +42,7 @@
             this.purpleButton = new System.Windows.Forms.Button();
             this.yellowButton = new System.Windows.Forms.Button();
             this.pinkButton = new System.Windows.Forms.Button();
+            this.colourLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // gameTimer
@@ -100,7 +101,7 @@
             this.greenButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.greenButton.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.greenButton.ForeColor = System.Drawing.Color.Green;
-            this.greenButton.Location = new System.Drawing.Point(78, 480);
+            this.greenButton.Location = new System.Drawing.Point(78, 508);
             this.greenButton.Name = "greenButton";
             this.greenButton.Size = new System.Drawing.Size(118, 36);
             this.greenButton.TabIndex = 9;
@@ -117,7 +118,7 @@
             this.orangeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.orangeButton.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.orangeButton.ForeColor = System.Drawing.Color.Orange;
-            this.orangeButton.Location = new System.Drawing.Point(246, 438);
+            this.orangeButton.Location = new System.Drawing.Point(246, 466);
             this.orangeButton.Name = "orangeButton";
             this.orangeButton.Size = new System.Drawing.Size(118, 36);
             this.orangeButton.TabIndex = 10;
@@ -134,7 +135,7 @@
             this.redButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.redButton.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.redButton.ForeColor = System.Drawing.Color.Red;
-            this.redButton.Location = new System.Drawing.Point(78, 438);
+            this.redButton.Location = new System.Drawing.Point(78, 466);
             this.redButton.Name = "redButton";
             this.redButton.Size = new System.Drawing.Size(118, 36);
             this.redButton.TabIndex = 11;
@@ -151,7 +152,7 @@
             this.blueButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.blueButton.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.blueButton.ForeColor = System.Drawing.Color.Blue;
-            this.blueButton.Location = new System.Drawing.Point(246, 480);
+            this.blueButton.Location = new System.Drawing.Point(246, 508);
             this.blueButton.Name = "blueButton";
             this.blueButton.Size = new System.Drawing.Size(118, 36);
             this.blueButton.TabIndex = 12;
@@ -168,7 +169,7 @@
             this.purpleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.purpleButton.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.purpleButton.ForeColor = System.Drawing.Color.Purple;
-            this.purpleButton.Location = new System.Drawing.Point(404, 480);
+            this.purpleButton.Location = new System.Drawing.Point(404, 508);
             this.purpleButton.Name = "purpleButton";
             this.purpleButton.Size = new System.Drawing.Size(118, 36);
             this.purpleButton.TabIndex = 13;
@@ -185,7 +186,7 @@
             this.yellowButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.yellowButton.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.yellowButton.ForeColor = System.Drawing.Color.Yellow;
-            this.yellowButton.Location = new System.Drawing.Point(404, 438);
+            this.yellowButton.Location = new System.Drawing.Point(404, 466);
             this.yellowButton.Name = "yellowButton";
             this.yellowButton.Size = new System.Drawing.Size(118, 36);
             this.yellowButton.TabIndex = 14;
@@ -202,7 +203,7 @@
             this.pinkButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.pinkButton.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pinkButton.ForeColor = System.Drawing.Color.HotPink;
-            this.pinkButton.Location = new System.Drawing.Point(246, 522);
+            this.pinkButton.Location = new System.Drawing.Point(246, 550);
             this.pinkButton.Name = "pinkButton";
             this.pinkButton.Size = new System.Drawing.Size(118, 36);
             this.pinkButton.TabIndex = 15;
@@ -211,12 +212,24 @@
             this.pinkButton.Visible = false;
             this.pinkButton.Click += new System.EventHandler(this.pinkButton_Click);
             // 
+            // colourLabel
+            // 
+            this.colourLabel.BackColor = System.Drawing.Color.Transparent;
+            this.colourLabel.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colourLabel.ForeColor = System.Drawing.Color.White;
+            this.colourLabel.Location = new System.Drawing.Point(101, 428);
+            this.colourLabel.Name = "colourLabel";
+            this.colourLabel.Size = new System.Drawing.Size(399, 25);
+            this.colourLabel.TabIndex = 16;
+            this.colourLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(600, 600);
+            this.Controls.Add(this.colourLabel);
             this.Controls.Add(this.pinkButton);
             this.Controls.Add(this.yellowButton);
             this.Controls.Add(this.purpleButton);
@@ -254,6 +267,7 @@
         private System.Windows.Forms.Button purpleButton;
         private System.Windows.Forms.Button yellowButton;
         private System.Windows.Forms.Button pinkButton;
+        private System.Windows.Forms.Label colourLabel;
     }
 }
 
