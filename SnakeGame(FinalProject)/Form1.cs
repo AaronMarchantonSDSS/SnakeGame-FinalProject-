@@ -60,11 +60,22 @@ namespace SnakeGame_FinalProject_
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            //set launch screen 
-            if (gameTimer.Enabled == false && snakeScore == 0)
+            //set home screen
+            if (gameTimer.Enabled == false)
             {
-                titleLabel.Text = "Snake Game!";
-                subtitleLabel.Text = "Press Space to Start or Esc to End";
+                if (redButton.Enabled == false)
+                {
+                    titleLabel.Text = "Snake Game!";
+                    subtitleLabel.Text = "Press Space to Start or Esc to End";
+
+                    if (snakeScore != 0)
+                    {
+                        scoreLabel.Text = $"Previous Score: {snakeScore}";
+
+                        imageLabel.Visible = true;
+                        this.BackgroundImage = null;
+                    }
+                }
             }
             //set game screen and setup snake graphics
             else if (gameTimer.Enabled == true)
@@ -109,16 +120,6 @@ namespace SnakeGame_FinalProject_
                         e.Graphics.FillEllipse(pinkBrush, bodyParts[i]);
                     }
                 }
-            }
-            //set game over screen
-            else if (gameTimer.Enabled == false)
-            {
-                titleLabel.Text = "Snake Game!";
-                subtitleLabel.Text = "Press Space to Start or Esc to End";
-                scoreLabel.Text = $"Previous Score: {snakeScore}";
-
-                imageLabel.Visible = true;
-                this.BackgroundImage = null;
             }
         }
 
