@@ -15,16 +15,21 @@ using System.Media;
 
 namespace SnakeGame_FinalProject_
 {
-    public partial class greenButton : Form
+    public partial class Form1 : Form
     {
-        //set up locations for graphics
+        //set up for graphics
         Rectangle snake = new Rectangle(160, 300, 20, 20);
         Rectangle apple = new Rectangle(405, 305, 10, 10);
 
-        SolidBrush redBrush = new SolidBrush(Color.DarkRed);
-        SolidBrush blueBrush = new SolidBrush(Color.CornflowerBlue);
+        SolidBrush snakeHeadBrush = new SolidBrush(Color.White);
+        SolidBrush appleBrush = new SolidBrush(Color.Gold);
+        SolidBrush redBrush = new SolidBrush(Color.Red);
         SolidBrush orangeBrush = new SolidBrush(Color.Orange);
+        SolidBrush yellowBrush = new SolidBrush(Color.Yellow);
         SolidBrush greenBrush = new SolidBrush(Color.Green);
+        SolidBrush blueBrush = new SolidBrush(Color.Blue);
+        SolidBrush purpleBrush = new SolidBrush(Color.Purple);
+        SolidBrush pinkBrush = new SolidBrush(Color.HotPink);
 
         SoundPlayer eat = new SoundPlayer(Properties.Resources.eatSound);
         SoundPlayer lose = new SoundPlayer(Properties.Resources.loseSound);
@@ -39,11 +44,11 @@ namespace SnakeGame_FinalProject_
         bool keepSpawning = false;
 
         string direction = "right";
-        string colour = "Orange";
+        string colour = "none";
 
         List<Rectangle> bodyParts = new List<Rectangle>();
 
-        public greenButton()
+        public Form1()
         {
             InitializeComponent();
         }
@@ -64,14 +69,45 @@ namespace SnakeGame_FinalProject_
             //set game screen and setup snake graphics
             else if (gameTimer.Enabled == true)
             {
+                titleLabel.Text = "";
+                subtitleLabel.Text = "";
+                scoreLabel.Text = "";
                 imageLabel.Visible = false;
 
-                e.Graphics.FillEllipse(redBrush, snake);
-                e.Graphics.FillEllipse(blueBrush, apple);
+                e.Graphics.FillEllipse(snakeHeadBrush, snake);
+                e.Graphics.FillEllipse(appleBrush, apple);
 
                 for (int i = 0; i < bodyParts.Count(); i++)
                 {
+                    //Choosing snake body colour
+                    if (colour == "Red")
+                    {
+                        e.Graphics.FillEllipse(redBrush, bodyParts[i]);
+                    }
+                    else if (colour == "Orange")
+                    {
                         e.Graphics.FillEllipse(orangeBrush, bodyParts[i]);
+                    }
+                    else if (colour == "Yellow")
+                    {
+                        e.Graphics.FillEllipse(yellowBrush, bodyParts[i]);
+                    }
+                    else if (colour == "Green")
+                    {
+                        e.Graphics.FillEllipse(greenBrush, bodyParts[i]);
+                    }
+                    else if (colour == "Blue")
+                    {
+                        e.Graphics.FillEllipse(blueBrush, bodyParts[i]);
+                    }
+                    else if (colour == "Purple")
+                    {
+                        e.Graphics.FillEllipse(purpleBrush, bodyParts[i]);
+                    }
+                    else if (colour == "Pink")
+                    {
+                        e.Graphics.FillEllipse(pinkBrush, bodyParts[i]);
+                    }
                 }
             }
             //set game over screen
@@ -129,8 +165,7 @@ namespace SnakeGame_FinalProject_
                 case Keys.Space:
                     if (gameTimer.Enabled == false)
                     {
-                        InitializeGame();
-                        gameTimer.Enabled = true;
+                        ColourScreen();
                     }
                     break;
                 case Keys.Escape:
@@ -239,10 +274,6 @@ namespace SnakeGame_FinalProject_
         public void InitializeGame()
         {
             //set up the game screen and draw graphics
-            titleLabel.Text = "";
-            subtitleLabel.Text = "";
-            scoreLabel.Text = "";
-
             gameTimer.Enabled = true;
 
             snakeScore = 0;
@@ -257,7 +288,112 @@ namespace SnakeGame_FinalProject_
             bodyParts.Add(new Rectangle(120, 300, 20, 20));
             bodyParts.Add(new Rectangle(100, 300, 20, 20));
 
+            redButton.Visible = false;
+            orangeButton.Visible = false;
+            yellowButton.Visible = false;
+            greenButton.Visible = false;
+            blueButton.Visible = false;
+            purpleButton.Visible = false;
+            pinkButton.Visible = false;
+
+            redButton.Enabled = false;
+            orangeButton.Enabled = false;
+            yellowButton.Enabled = false;
+            greenButton.Enabled = false;
+            blueButton.Enabled = false;
+            purpleButton.Enabled = false;
+            pinkButton.Enabled = false;
+
             this.BackgroundImage = Properties.Resources.gridImage;
+        }
+
+        public void ColourScreen()
+        {
+            titleLabel.Text = "";
+            subtitleLabel.Text = "";
+            scoreLabel.Text = "";
+
+            redButton.Visible = true;
+            orangeButton.Visible = true;
+            yellowButton.Visible = true;
+            greenButton.Visible = true;
+            blueButton.Visible = true;
+            purpleButton.Visible = true;
+            pinkButton.Visible = true;
+
+            redButton.Enabled = true;
+            orangeButton.Enabled = true;
+            yellowButton.Enabled = true;
+            greenButton.Enabled = true;
+            blueButton.Enabled = true;
+            purpleButton.Enabled = true;
+            pinkButton.Enabled = true;
+
+            Refresh();
+        }
+
+        //Setup game with chosen colour snake (colour = button pressed)
+        private void redButton_Click(object sender, EventArgs e)
+        {
+            InitializeGame();
+
+            gameTimer.Enabled = true;
+
+            colour = "Red";
+        }
+
+        private void orangeButton_Click(object sender, EventArgs e)
+        {
+            InitializeGame();
+
+            gameTimer.Enabled = true;
+
+            colour = "Orange";
+        }
+
+        private void yellowButton_Click(object sender, EventArgs e)
+        {
+            InitializeGame();
+
+            gameTimer.Enabled = true;
+
+            colour = "Yellow";
+        }
+
+        private void greenButton_Click(object sender, EventArgs e)
+        {
+            InitializeGame();
+
+            gameTimer.Enabled = true;
+
+            colour = "Green";
+        }
+
+        private void blueButton_Click(object sender, EventArgs e)
+        {
+            InitializeGame();
+
+            gameTimer.Enabled = true;
+
+            colour = "Blue";
+        }
+
+        private void purpleButton_Click(object sender, EventArgs e)
+        {
+            InitializeGame();
+
+            gameTimer.Enabled = true;
+
+            colour = "Purple";
+        }
+
+        private void pinkButton_Click(object sender, EventArgs e)
+        {
+            InitializeGame();
+
+            gameTimer.Enabled = true;
+
+            colour = "Pink";
         }
     }
 }
