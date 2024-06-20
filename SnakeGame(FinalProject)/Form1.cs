@@ -60,7 +60,7 @@ namespace SnakeGame_FinalProject_
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            //set home screen
+            //set home screen and display info
             if (gameTimer.Enabled == false)
             {
                 if (redButton.Enabled == false)
@@ -69,7 +69,14 @@ namespace SnakeGame_FinalProject_
                     subtitleLabel.Text = "Press Space to Start or Esc to End";
                     colourLabel.Text = "";
 
-                    if (snakeScore != 0)
+                    if (snakeScore == 896)
+                    {
+                        scoreLabel.Text = $"You Win! Score: {snakeScore}";
+
+                        imageLabel.Visible = true;
+                        this.BackgroundImage = null;
+                    }
+                    else if (snakeScore != 0)
                     {
                         scoreLabel.Text = $"Previous Score: {snakeScore}";
 
